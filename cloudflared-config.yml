@@ -1,0 +1,11 @@
+tunnel: 27855482-6492-4b2f-9d49-d4f7c62e8ac1
+credentials-file: /etc/cloudflared/27855482-6492-4b2f-9d49-d4f7c62e8ac1.json
+
+ingress:
+  - hostname: api.hugozera.space
+    service: http://backend:3000
+
+  - hostname: hugozera.space
+    service: http://web:80
+
+  - service: http_status:404

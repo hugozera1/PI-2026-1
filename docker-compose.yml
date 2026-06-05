@@ -1,0 +1,34 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ab-backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend/data.json:/app/data.json
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: ab-web
+    ports:
+      - "5173:80"
+    restart: unless-stopped
+    depends_on:
+      - backend
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: ab-cloudflared
+    command: tunnel run
+    volumes:
+      - ./cloudflared-config.yml:/etc/cloudflared/config.yml
+      - ~/.cloudflared/27855482-6492-4b2f-9d49-d4f7c62e8ac1.json:/etc/cloudflared/27855482-6492-4b2f-9d49-d4f7c62e8ac1.json
+    restart: unless-stopped
+    depends_on:
+      - web
+      - backend
