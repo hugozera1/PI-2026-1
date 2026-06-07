@@ -1,4 +1,13 @@
 services:
+  ml:
+    build:
+      context: ./backend/ml
+      dockerfile: Dockerfile
+    container_name: ab-ml
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+
   backend:
     build:
       context: ./backend
@@ -8,6 +17,10 @@ services:
       - "3000:3000"
     volumes:
       - ./backend/data.json:/app/data.json
+    environment:
+      - ML_URL=http://ml:5000
+    depends_on:
+      - ml
     restart: unless-stopped
 
   web:

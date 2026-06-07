@@ -3,11 +3,11 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
-const fs = require('fs')
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const DATA_FILE = path.join(__dirname, 'data.json');
+const ML_URL = process.env.ML_URL || 'http://127.0.0.1:5000';
 
 app.use(cors());
 app.use(express.json());
@@ -138,7 +138,7 @@ app.get('/api/ml', async (req, res) => {
     )
 
     const resposta = await axios.post(
-        'http://localhost:5000/clusterizar',
+        `${ML_URL}/clusterizar`,
         dados
     )
 
@@ -183,7 +183,7 @@ app.get('/ml/perfil', async (req, res) => {
     );
 
     const resposta = await axios.post(
-      'http://127.0.0.1:5000/classificar',
+      `${ML_URL}/classificar`,
       data
     );
 

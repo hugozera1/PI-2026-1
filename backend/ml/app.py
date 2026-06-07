@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify, request
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
@@ -33,25 +34,18 @@ def classificar():
         if qtd_transacoes > 0 else 0
     )
 
-    # Dataset de treinamento
-    X = [
-        [5000, 1000, 4000],
-        [3000, 2500, 500],
-        [2000, 3500, -1500],
-        [7000, 2000, 5000],
-        [2500, 2400, 100]
-    ]
+    # Carrega a base de dados real (1000 registros) em formato CSV usando pandas
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    dataset_path = os.path.join(script_dir, 'dataset.csv')
+    df = pd.read_csv(dataset_path)
 
-    y = [
-        'Econômico',
-        'Equilibrado',
-        'Gastador',
-        'Econômico',
-        'Equilibrado'
-    ]
+    # Separa os atributos (X) e rótulos (y)
+    X = df[['receitas', 'despesas', 'saldo']].values
+    y = df['perfil'].values
 
     modelo = DecisionTreeClassifier()
 
+    # Treina o classificador com a base de dados
     modelo.fit(X, y)
 
     perfil = modelo.predict([
@@ -67,4 +61,4 @@ def classificar():
     })
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(host='0.0.0.0', port=5000)
