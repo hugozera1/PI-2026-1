@@ -2,6 +2,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Constants from 'expo-constants';
 import { Platform } from 'react-native';
 
+// Set this to true to use the production Azure backend, or false to use the local development backend
+const USE_PRODUCTION_BACKEND = true;
+const AZURE_BACKEND_URL = 'https://pi-5-gvfngxh8heavbvat.southafricanorth-01.azurewebsites.net';
+
 let ip = Platform.OS === 'android' ? '10.0.2.2' : 'localhost';
 
 try {
@@ -17,7 +21,7 @@ try {
   console.log('Failed to parse dynamic IP, using fallback', e);
 }
 
-const API_URL = `http://${ip}:3000`;
+const API_URL = USE_PRODUCTION_BACKEND ? AZURE_BACKEND_URL : `http://${ip}:3000`;
 
 export const trackEvent = async (type, payload) => {
   try {

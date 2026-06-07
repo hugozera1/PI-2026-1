@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: window.location.hostname === 'localhost' 
-    ? 'http://localhost:3000' 
-    : 'https://api.hugozera.space',
+  // Use VITE_API_URL environment variable if present, otherwise default to Azure backend.
+  // If you need to develop locally against a local backend, you can set VITE_API_URL=http://localhost:3000 in a .env file.
+  baseURL: import.meta.env.VITE_API_URL || 'https://pi-5-gvfngxh8heavbvat.southafricanorth-01.azurewebsites.net',
 });
 
 api.interceptors.request.use((config) => {

@@ -7,6 +7,7 @@ import {
   Legend,
   ResponsiveContainer
 } from "recharts";
+import api from "../api";
 
 const COLORS = [
   "#0088FE",
@@ -22,9 +23,9 @@ export default function ExpensesPieChart() {
 
   useEffect(() => {
 
-    fetch("http://localhost:3000/dashboard")
-      .then((res) => res.json())
-      .then((dashboard) => {
+    api.get("/dashboard")
+      .then((res) => {
+        const dashboard = res.data;
 
         const formatted = Object.entries(
           dashboard.expensesByCategory
@@ -35,6 +36,9 @@ export default function ExpensesPieChart() {
 
         setData(formatted);
 
+      })
+      .catch((err) => {
+        console.error("Error fetching dashboard expenses:", err);
       });
 
   }, []);
