@@ -7,9 +7,9 @@ import Constants from 'expo-constants';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 
-// Set this to true to use the production Azure backend, or false to use the local development backend
+// Set this to true to use the production backend (from env), or false to use the dynamically resolved local development IP
 const USE_PRODUCTION_BACKEND = true;
-const AZURE_BACKEND_URL = 'https://pi-5-gvfngxh8heavbvat.southafricanorth-01.azurewebsites.net';
+const FALLBACK_BACKEND_URL = 'http://localhost:3000';
 
 // Dynamic IP resolution for Expo Go and Emulator environments
 let ip = Platform.OS === 'android' ? '10.0.2.2' : 'localhost';
@@ -25,7 +25,7 @@ try {
   console.log('Failed to parse dynamic IP, using fallback', e);
 }
 
-const API_URL = USE_PRODUCTION_BACKEND ? AZURE_BACKEND_URL : `http://${ip}:3000`;
+const API_URL = USE_PRODUCTION_BACKEND ? (process.env.EXPO_PUBLIC_API_URL || FALLBACK_BACKEND_URL) : `http://${ip}:3000`;
 
 // Configure axios instance with interceptor to inject JWT token automatically
 const api = axios.create({

@@ -1,215 +1,315 @@
-[
-  {
-    "id": "1775809949840",
-    "userId": "user_pl0f6",
-    "version": "A",
-    "timestamp": "2026-04-10T08:32:39.072Z",
-    "type": "click",
-    "pageName": "Home",
-    "buttonName": "Clicou Produto: Câmera Sport 4K"
-  },
-  {
-    "id": "1775809949841",
-    "userId": "user_pl0f6",
-    "version": "A",
-    "timestamp": "2026-04-10T08:32:39.072Z",
-    "type": "render_time",
-    "pageName": "Detalhes_Produto"
-  },
-  {
-    "id": "1775809949842",
-    "userId": "user_pl0f6",
-    "version": "A",
-    "timestamp": "2026-04-10T08:32:39.073Z",
-    "type": "page_view",
-    "pageName": "Detalhes_Produto"
-  },
-  {
-    "id": "1775809952103",
-    "userId": "user_pl0f6",
-    "version": "A",
-    "timestamp": "2026-04-10T08:32:41.345Z",
-    "type": "page_view",
-    "pageName": "Início"
-  },
-  {
-    "id": "1775809954168",
-    "userId": "user_pl0f6",
-    "version": "A",
-    "timestamp": "2026-04-10T08:32:43.378Z",
-    "type": "click",
-    "pageName": "Home",
-    "buttonName": "Clicou Produto: Fone AirPro Bluetooth"
-  },
-  {
-    "id": "1775809954173",
-    "userId": "user_pl0f6",
-    "version": "A",
-    "timestamp": "2026-04-10T08:32:43.378Z",
-    "type": "render_time",
-    "pageName": "Detalhes_Produto"
-  },
-  {
-    "id": "1775809954174",
-    "userId": "user_pl0f6",
-    "version": "A",
-    "timestamp": "2026-04-10T08:32:43.379Z",
-    "type": "page_view",
-    "pageName": "Detalhes_Produto"
-  },
-  {
-    "id": "1775809956531",
-    "userId": "user_pl0f6",
-    "version": "A",
-    "timestamp": "2026-04-10T08:32:45.771Z",
-    "type": "page_view",
-    "pageName": "Início"
-  },
-  {
-    "id": "1775809958375",
-    "userId": "user_pl0f6",
-    "version": "A",
-    "timestamp": "2026-04-10T08:32:47.614Z",
-    "type": "click",
-    "pageName": "Home",
-    "buttonName": "Clicou Produto: Smartwatch Pulse Elite"
-  },
-  {
-    "id": "1775809958381",
-    "userId": "user_pl0f6",
-    "version": "A",
-    "timestamp": "2026-04-10T08:32:47.615Z",
-    "type": "page_view",
-    "pageName": "Detalhes_Produto"
-  },
-  {
-    "id": "1775809958382",
-    "userId": "user_pl0f6",
-    "version": "A",
-    "timestamp": "2026-04-10T08:32:47.614Z",
-    "type": "render_time",
-    "pageName": "Detalhes_Produto"
-  },
-  {
-    "id": "1775809960975",
-    "userId": "user_pl0f6",
-    "version": "A",
-    "timestamp": "2026-04-10T08:32:50.205Z",
-    "type": "click",
-    "pageName": "Detalhes_Produto",
-    "buttonName": "Adicionar ao Carrinho"
-  },
-  {
-    "id": "1775809966034",
-    "userId": "user_pl0f6",
-    "version": "A",
-    "timestamp": "2026-04-10T08:32:55.253Z",
-    "type": "click",
-    "pageName": "Detalhes_Produto",
-    "buttonName": "Adicionar ao Carrinho"
-  },
-  {
-    "id": "1777062762326",
-    "amount": 0.05,
-    "category": "Lazer",
-    "description": "uber",
-    "type": "expense",
-    "date": "2026-04-24T20:32:42.326Z"
-  },
-  {
-    "id": "1777071230505",
-    "amount": 7,
-    "category": "Contas",
-    "description": "divida",
-    "type": "expense",
-    "date": "2026-04-24T22:53:50.505Z"
-  },
-  {
-    "id": "1777071251183",
-    "amount": 20,
-    "category": "Outros",
-    "description": "teste",
-    "type": "income",
-    "date": "2026-04-24T22:54:11.183Z"
-  },
-  {
-    "id": "1777071365675",
-    "amount": 15,
-    "category": "Alimentação",
-    "description": "salgado",
-    "type": "expense",
-    "date": "2026-04-24T22:56:05.675Z"
-  },
-  {
-    "id": "1777071440888",
-    "amount": 30,
-    "category": "Alimentação",
-    "description": "huggs ",
-    "type": "expense",
-    "date": "2026-04-24T22:57:20.888Z"
-  },
-  {
-    "id": "1777071484509",
-    "amount": 300,
-    "category": "Alimentação",
-    "description": "Compras mensais",
-    "type": "expense",
-    "date": "2026-04-24T22:58:04.509Z"
-  },
-  {
-    "id": "1777072150914",
-    "amount": 50,
-    "category": "Contas",
-    "description": "conta de internet",
-    "type": "expense",
-    "date": "2026-04-24T23:09:10.914Z"
-  },
-  {
-    "id": "1777072204387",
-    "amount": 400,
-    "category": "Educação",
-    "description": "Mat escolar",
-    "type": "expense",
-    "date": "2026-04-24T23:10:04.387Z"
-  },
-  {
-    "id": "1780803971838",
-    "amount": 1000,
-    "category": "Salário",
-    "description": "Salario Extra",
-    "type": "income",
-    "date": "2026-06-07T03:46:11.838Z"
-  },
-  {
-    "id": "1780804061103",
-    "amount": 10000,
-    "category": "Salário",
-    "description": "Salario Extra",
-    "type": "income",
-    "date": "2026-06-07T03:47:41.103Z"
-  },
-  {
-    "id": "1780804229930",
-    "amount": 20000,
-    "category": "Salário",
-    "description": "Salario de Teste Local",
-    "type": "income",
-    "date": "2026-06-07T03:50:29.931Z"
-  },
-  {
-    "id": "1780804586360",
-    "amount": 40000,
-    "category": "Lazer",
-    "description": "Compra de Luxo",
-    "type": "expense",
-    "date": "2026-06-07T03:56:26.360Z"
-  },
-  {
-    "id": "1780807043243",
-    "amount": 50,
-    "category": "Alimentação",
-    "description": "lanche",
-    "type": "income",
-    "date": "2026-06-07T04:37:23.243Z"
-  }
-]
+{
+  "users": [
+    {
+      "id": "1780814180430srxvp",
+      "name": "hugo",
+      "email": "hugorodrigues1052@gmail.com",
+      "password": "$2a$10$agHKCXa1jsQr46EHKjyMnu1JOwZF/lksknvnAwzPv7tQERNAO.x32"
+    },
+    {
+      "id": "17808142573359nas3",
+      "name": "hugo2",
+      "email": "steamdohugo@hotmail.com",
+      "password": "$2a$10$jSHH41R6Yww3Ypi1IJwzyuQ6oGymHw3gyJEesiQ9if6olUzPs756C"
+    },
+    {
+      "id": "1780854992287fgwmp",
+      "name": "GABRIEL ANTONIO FERRAREZ OLIVEIRA",
+      "email": "gabs@gmail.com",
+      "password": "$2a$10$BaoBvQ7lce/ABtR39./5POmS9mgoUwD1CUcPgJt15.fbohXT/9klK"
+    },
+    {
+      "id": "1780867882144pzd8d",
+      "name": "Pablo",
+      "email": "pablo@gmail.com",
+      "password": "$2a$10$MrpR6ja2SdAoTWyDkeGIHuFlk6mTfJrkptFoz2jIaMjsE7McLokJi"
+    },
+    {
+      "id": "1780868322157qnumn",
+      "name": "Miguel Silva",
+      "email": "miguel@gmail.com",
+      "password": "$2a$10$qq5fD2AIpyZ89AK8pExSquNTiLQh5qSceFeVKe46262w2tXt3jgrG"
+    },
+    {
+      "id": "17808685254406ea2g",
+      "name": "miguel sousa",
+      "email": "miguelsousa@gmail.com",
+      "password": "$2a$10$1tlfySwfYNb//FhyKI1vd.TnYUD2GoEeLbtd7.TnCuK/LjaBxPD0i"
+    },
+    {
+      "id": "1780869104146u3i6q",
+      "name": "Arthur ",
+      "email": "arthur123@hotmail.com",
+      "password": "$2a$10$0U60mzSLKKdIsojDv0W/X.ZQuaYbCnbtYN64rWgvxDOO90O9KTCf2"
+    },
+    {
+      "id": "1780870253999dk2c5",
+      "name": "Hugo3",
+      "email": "hugo@hugo.com",
+      "password": "$2a$10$gPsrZICBegQKdzUHOAKcluoBrGSKKqTdHHwLUuiy7/5o9pI4ggiNW"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "1777071230505",
+      "amount": 7,
+      "category": "Contas",
+      "description": "divida",
+      "type": "expense",
+      "date": "2026-04-24T22:53:50.505Z",
+      "userId": "1780814180430srxvp"
+    },
+    {
+      "id": "1777071440888",
+      "amount": 30,
+      "category": "Alimentação",
+      "description": "huggs ",
+      "type": "expense",
+      "date": "2026-04-24T22:57:20.888Z",
+      "userId": "1780814180430srxvp"
+    },
+    {
+      "id": "1777071484509",
+      "amount": 300,
+      "category": "Alimentação",
+      "description": "Compras mensais",
+      "type": "expense",
+      "date": "2026-04-24T22:58:04.509Z",
+      "userId": "1780814180430srxvp"
+    },
+    {
+      "id": "1777072150914",
+      "amount": 50,
+      "category": "Contas",
+      "description": "conta de internet",
+      "type": "expense",
+      "date": "2026-04-24T23:09:10.914Z",
+      "userId": "1780814180430srxvp"
+    },
+    {
+      "id": "1777072204387",
+      "amount": 400,
+      "category": "Educação",
+      "description": "Mat escolar",
+      "type": "expense",
+      "date": "2026-04-24T23:10:04.387Z",
+      "userId": "1780814180430srxvp"
+    },
+    {
+      "id": "1780807043243",
+      "amount": 50,
+      "category": "Alimentação",
+      "description": "lanche",
+      "type": "income",
+      "date": "2026-06-07T04:37:23.243Z",
+      "userId": "1780814180430srxvp"
+    },
+    {
+      "id": "1780838080626eaqjv",
+      "userId": "17808142573359nas3",
+      "amount": 100,
+      "category": "Contas",
+      "description": "Cabelo",
+      "type": "expense",
+      "date": "2026-06-07T13:14:40.626Z"
+    },
+    {
+      "id": "178083809834928zwb",
+      "userId": "17808142573359nas3",
+      "amount": 5000,
+      "category": "Outros",
+      "description": "Salario",
+      "type": "income",
+      "date": "2026-06-07T13:14:58.349Z"
+    },
+    {
+      "id": "1780839151617wxyhg",
+      "userId": "17808142573359nas3",
+      "amount": 50,
+      "category": "Alimentação",
+      "description": "lanche",
+      "type": "expense",
+      "date": "2026-06-07T13:32:31.617Z"
+    },
+    {
+      "id": "1780854906699znkey",
+      "userId": "1780814180430srxvp",
+      "amount": 10,
+      "category": "Transporte",
+      "description": "Uber",
+      "type": "expense",
+      "date": "2026-06-07T17:55:06.699Z"
+    },
+    {
+      "id": "1780855107888g41jn",
+      "userId": "1780854992287fgwmp",
+      "amount": 170,
+      "category": "Contas",
+      "description": "Conta de Luz",
+      "type": "expense",
+      "date": "2026-06-07T17:58:27.889Z"
+    },
+    {
+      "id": "178085512008120zjp",
+      "userId": "1780854992287fgwmp",
+      "amount": 120,
+      "category": "Contas",
+      "description": "Conta de água",
+      "type": "expense",
+      "date": "2026-06-07T17:58:40.081Z"
+    },
+    {
+      "id": "1780855150740u063y",
+      "userId": "1780854992287fgwmp",
+      "amount": 2000,
+      "category": "Salário",
+      "description": "",
+      "type": "income",
+      "date": "2026-06-07T17:59:10.740Z"
+    },
+    {
+      "id": "17808556039498pa1e",
+      "userId": "1780854992287fgwmp",
+      "amount": 2000,
+      "category": "Transporte",
+      "description": "",
+      "type": "expense",
+      "date": "2026-06-07T18:06:43.949Z"
+    },
+    {
+      "id": "1780857688476yl43b",
+      "userId": "1780814180430srxvp",
+      "amount": 2,
+      "category": "Alimentação",
+      "description": "Bala",
+      "type": "expense",
+      "date": "2026-06-07T18:41:28.476Z"
+    },
+    {
+      "id": "1780867903963kgc2h",
+      "userId": "1780867882144pzd8d",
+      "amount": 1000,
+      "category": "Contas",
+      "description": "ALUGUEL MENSAL",
+      "type": "expense",
+      "date": "2026-06-07T21:31:43.963Z"
+    },
+    {
+      "id": "1780867919954qrcyh",
+      "userId": "1780867882144pzd8d",
+      "amount": 5000,
+      "category": "Salário",
+      "description": "Salario mensal",
+      "type": "income",
+      "date": "2026-06-07T21:31:59.955Z"
+    },
+    {
+      "id": "1780868268692tmesf",
+      "userId": "1780867882144pzd8d",
+      "amount": 100,
+      "category": "Salário",
+      "description": "Bico de garçom",
+      "type": "income",
+      "date": "2026-06-07T21:37:48.692Z"
+    },
+    {
+      "id": "1780868371811pyxsz",
+      "userId": "1780868322157qnumn",
+      "amount": 5000,
+      "category": "Salário",
+      "description": "salario mensal",
+      "type": "income",
+      "date": "2026-06-07T21:39:31.811Z"
+    },
+    {
+      "id": "1780868386629n3t5e",
+      "userId": "1780868322157qnumn",
+      "amount": 2000,
+      "category": "Contas",
+      "description": "aluguel",
+      "type": "expense",
+      "date": "2026-06-07T21:39:46.629Z"
+    },
+    {
+      "id": "1780868569158bno30",
+      "userId": "17808685254406ea2g",
+      "amount": 5000,
+      "category": "Salário",
+      "description": "Salário Mensal",
+      "type": "income",
+      "date": "2026-06-07T21:42:49.158Z"
+    },
+    {
+      "id": "1780868588872zl8ob",
+      "userId": "17808685254406ea2g",
+      "amount": 1000,
+      "category": "Contas",
+      "description": "Aluguel Mensal",
+      "type": "expense",
+      "date": "2026-06-07T21:43:08.872Z"
+    },
+    {
+      "id": "1780868674677l6jtf",
+      "userId": "17808685254406ea2g",
+      "amount": 3000,
+      "category": "Contas",
+      "description": "Contas em Geral",
+      "type": "expense",
+      "date": "2026-06-07T21:44:34.677Z"
+    },
+    {
+      "id": "1780868696417bpg7x",
+      "userId": "17808685254406ea2g",
+      "amount": 700,
+      "category": "Transporte",
+      "description": "Gasolina",
+      "type": "expense",
+      "date": "2026-06-07T21:44:56.417Z"
+    },
+    {
+      "id": "17808690860488575z",
+      "userId": "17808685254406ea2g",
+      "amount": 100,
+      "category": "Alimentação",
+      "description": "Almoço ",
+      "type": "expense",
+      "date": "2026-06-07T21:51:26.048Z"
+    },
+    {
+      "id": "1780869136429vdmuu",
+      "userId": "1780869104146u3i6q",
+      "amount": 10000,
+      "category": "Salário",
+      "description": "",
+      "type": "income",
+      "date": "2026-06-07T21:52:16.429Z"
+    },
+    {
+      "id": "17808691622391h2g6",
+      "userId": "1780869104146u3i6q",
+      "amount": 1000,
+      "category": "Alimentação",
+      "description": "Mercado ",
+      "type": "expense",
+      "date": "2026-06-07T21:52:42.239Z"
+    },
+    {
+      "id": "1780870282494amohl",
+      "userId": "1780870253999dk2c5",
+      "amount": 10,
+      "category": "Alimentação",
+      "description": "Pao",
+      "type": "expense",
+      "date": "2026-06-07T22:11:22.494Z"
+    },
+    {
+      "id": "1780870419354dj0u5",
+      "userId": "1780814180430srxvp",
+      "amount": 20,
+      "category": "Transporte",
+      "description": "Uber",
+      "type": "expense",
+      "date": "2026-06-07T22:13:39.354Z"
+    }
+  ]
+}
