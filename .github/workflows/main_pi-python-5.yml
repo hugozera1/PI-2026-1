@@ -22,9 +22,9 @@ jobs:
       - name: Set up Python version
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11' # Ajustado para versão estável suportada pela Azure
+          python-version: '3.11' # Versão estável recomendada pela Azure
 
-      # 🛠️ Build no diretório backend/ml
+      # 🛠️ Entra na pasta do ML para criar a venv e instalar dependências
       - name: Create and Start virtual environment and Install dependencies
         run: |
           cd backend/ml
@@ -32,7 +32,7 @@ jobs:
           source antenv/bin/activate
           pip install -r requirements.txt
                 
-      # Fazemos o upload apenas dos arquivos de backend/ml para que fiquem na raiz do container da Azure
+      # Faz o upload apenas do conteúdo de backend/ml para a raiz do container de deploy
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
         with:
@@ -41,7 +41,6 @@ jobs:
             backend/ml
             !backend/ml/venv/
             !backend/ml/antenv/
-      
 
   deploy:
     runs-on: ubuntu-latest
