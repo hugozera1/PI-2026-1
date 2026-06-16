@@ -4,17 +4,21 @@ import api from "../api";
 export default function AIProfileCard() {
   const [ia, setIa] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchIA();
   }, []);
 
   const fetchIA = async () => {
+    setLoading(true);
+    setError(null);
     try {
       const response = await api.get('/ml/perfil');
       setIa(response.data);
-    } catch (error) {
-      console.error("Erro IA:", error);
+    } catch (err) {
+      console.error("Erro IA:", err);
+      setError("Não foi possível conectar ao serviço de Inteligência Artificial.");
     } finally {
       setLoading(false);
     }
@@ -61,6 +65,25 @@ export default function AIProfileCard() {
         <p className="text-stone-400">
           🤖 Analisando perfil financeiro por IA...
         </p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="bg-stone-900/80 border border-stone-800 rounded-2xl p-6">
+        <h2 className="text-lg font-semibold text-white mb-2">
+          Algoritmo de Saúde Financeira
+        </h2>
+        <p className="text-rose-450 text-sm mb-3">
+          ⚠️ {error} (Verifique se o servidor de IA/Machine Learning está rodando na VM).
+        </p>
+        <button 
+          onClick={fetchIA}
+          className="text-xs text-lime-400 hover:text-lime-300 font-semibold underline cursor-pointer focus:outline-none"
+        >
+          Tentar novamente
+        </button>
       </div>
     );
   }
