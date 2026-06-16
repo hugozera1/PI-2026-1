@@ -5,6 +5,8 @@ const path = require('path');
 const axios = require('axios');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsdoc = require('swagger-jsdoc');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -14,6 +16,44 @@ const JWT_SECRET = process.env.JWT_SECRET || 'spendly_secret_key_12345';
 
 app.use(cors());
 app.use(express.json());
+
+// Configuração do Swagger
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Spendly API Documentation',
+      version: '1.0.0',
+      description: 'Documentação das rotas da API do Spendly (Gerenciamento Financeiro com IA)',
+      contact: {
+        name: 'Spendly Team',
+      },
+    },
+    servers: [
+      {
+        url: `http://localhost:3000`,
+        description: 'Servidor Local (Ambiente de Desenvolvimento)',
+      },
+      {
+        url: `http://20.164.2.23:3000`,
+        description: 'Servidor VM (Produção / Nuvem)',
+      },
+    ],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
+  },
+  apis: [__filename], // Lê os comentários JSDoc deste próprio arquivo
+};
+
+const swaggerSpec = swaggerJsdoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Initialize data file or run migration if it's the old flat array format
 if (!fs.existsSync(DATA_FILE)) {
@@ -89,6 +129,38 @@ const authMiddleware = (req, res, next) => {
 // --- AUTHENTICATION ROUTES ---
 
 // POST /auth/register
+/**
+ * @openapi
+ * /auth/register:
+ *   post:
+ *     summary: Registra um novo usuário
+ *     tags: [Autenticação]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *               - email
+ *               - password
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 example: João Silva
+ *               email:
+ *                 type: string
+ *                 example: joao@example.com
+ *               password:
+ *                 type: string
+ *                 example: senha123
+ *     responses:
+ *       201:
+ *         description: Usuário cadastrado com sucesso
+ *       400:
+ *         description: E-mail em uso ou campos em branco
+ */
 app.post('/auth/register', async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -132,6 +204,34 @@ app.post('/auth/register', async (req, res) => {
 });
 
 // POST /auth/login
+/**
+ * @openapi
+ * /auth/login:
+ *   post:
+ *     summary: Autentica um usuário e retorna o token JWT
+ *     tags: [Autenticação]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *               - password
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 example: joao@example.com
+ *               password:
+ *                 type: string
+ *                 example: senha123
+ *     responses:
+ *       200:
+ *         description: Login bem-sucedido
+ *       400:
+ *         description: Credenciais inválidas ou campos em branco
+ */
 app.post('/auth/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -169,6 +269,50 @@ app.post('/auth/login', async (req, res) => {
 // --- PORTFOLIO & TRANSACTION ROUTES (Protected) ---
 
 // POST /transactions
+/**
+ * @openapi
+ * /transactions:
+ *   post:
+ *     summary: Cria uma nova transação financeira
+ *     tags: [Transações]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - amount
+ *               - category
+ *               - type
+ *             properties:
+ *               amount:
+ *                 type: number
+ *                 example: 50.00
+ *               category:
+ *                 type: string
+ *                 example: Alimentação
+ *               description:
+ *                 type: string
+ *                 example: Almoço no restaurante
+ *               type:
+ *                 type: string
+ *                 enum: [income, expense]
+ *                 example: expense
+ *               date:
+ *                 type: string
+ *                 format: date-time
+ *                 example: 2026-06-16T12:00:00.000Z
+ *     responses:
+ *       201:
+ *         description: Transação criada com sucesso
+ *       400:
+ *         description: Campos obrigatórios ausentes
+ *       401:
+ *         description: Não autorizado (token inválido/ausente)
+ */
 app.post('/transactions', authMiddleware, (req, res) => {
   try {
     const { amount, category, description, type, date } = req.body;
@@ -199,6 +343,20 @@ app.post('/transactions', authMiddleware, (req, res) => {
 });
 
 // GET /transactions
+/**
+ * @openapi
+ * /transactions:
+ *   get:
+ *     summary: Retorna a lista de transações do usuário logado
+ *     tags: [Transações]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Lista de transações carregada com sucesso
+ *       401:
+ *         description: Não autorizado
+ */
 app.get('/transactions', authMiddleware, (req, res) => {
   try {
     const data = loadData();
@@ -212,6 +370,29 @@ app.get('/transactions', authMiddleware, (req, res) => {
 });
 
 // DELETE /transactions/:id
+/**
+ * @openapi
+ * /transactions/{id}:
+ *   delete:
+ *     summary: Exclui uma transação pelo ID
+ *     tags: [Transações]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID da transação
+ *     responses:
+ *       200:
+ *         description: Transação excluída com sucesso
+ *       404:
+ *         description: Transação não encontrada
+ *       401:
+ *         description: Não autorizado
+ */
 app.delete('/transactions/:id', authMiddleware, (req, res) => {
   try {
     const { id } = req.params;
@@ -233,6 +414,20 @@ app.delete('/transactions/:id', authMiddleware, (req, res) => {
 });
 
 // GET /dashboard
+/**
+ * @openapi
+ * /dashboard:
+ *   get:
+ *     summary: Retorna os dados resumidos do painel financeiro (receitas, despesas, saldo, categoria e tendências mensais)
+ *     tags: [Dashboard]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Dados do dashboard processados com sucesso
+ *       401:
+ *         description: Não autorizado
+ */
 app.get('/dashboard', authMiddleware, (req, res) => {
   try {
     const data = loadData();
@@ -304,6 +499,22 @@ app.get('/dashboard', authMiddleware, (req, res) => {
 });
 
 // GET /api/ml
+/**
+ * @openapi
+ * /api/ml:
+ *   get:
+ *     summary: Analisa as transações do usuário por agrupamento (Clustering) na IA
+ *     tags: [IA / Machine Learning]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Análise de agrupamento concluída
+ *       500:
+ *         description: Erro no servidor de ML
+ *       401:
+ *         description: Não autorizado
+ */
 app.get('/api/ml', authMiddleware, async (req, res) => {
   try {
     const data = loadData();
@@ -322,6 +533,22 @@ app.get('/api/ml', authMiddleware, async (req, res) => {
 });
 
 // GET /ml/perfil
+/**
+ * @openapi
+ * /ml/perfil:
+ *   get:
+ *     summary: Obtém a classificação e score de saúde financeira por IA
+ *     tags: [IA / Machine Learning]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Análise realizada com sucesso
+ *       550:
+ *         description: Erro no servidor de ML
+ *       401:
+ *         description: Não autorizado
+ */
 app.get('/ml/perfil', authMiddleware, async (req, res) => {
   try {
     const data = loadData();
@@ -342,6 +569,20 @@ app.get('/ml/perfil', authMiddleware, async (req, res) => {
 });
 
 // Seed data
+/**
+ * @openapi
+ * /seed:
+ *   post:
+ *     summary: Gera 50 transações fictícias para testes do usuário logado
+ *     tags: [Desenvolvimento / Testes]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Dados de teste gerados com sucesso
+ *       401:
+ *         description: Não autorizado
+ */
 app.post('/seed', authMiddleware, (req, res) => {
   try {
     const seedData = [];
