@@ -72,6 +72,7 @@ function MainApp() {
   const [modalVisible, setModalVisible] = useState(false);
   const [balance, setBalance] = useState(0);
   const [iaData, setIaData] = useState(null);
+  const [iaError, setIaError] = useState(null);
 
   // Form State for new transaction
   const [amount, setAmount] = useState('');
@@ -111,6 +112,7 @@ function MainApp() {
 
   const fetchData = async () => {
     setLoading(true);
+    setIaError(null);
     try {
       const [txRes, dashRes, iaRes] = await Promise.all([
         api.get('/transactions'),
@@ -124,6 +126,9 @@ function MainApp() {
       setBalance(dashRes.data.summary.balance);
       if (iaRes && iaRes.data) {
         setIaData(iaRes.data);
+      } else {
+        setIaData(null);
+        setIaError("Não foi possível carregar a análise da IA.");
       }
     } catch (error) {
       console.log('Error fetching dashboard data:', error);
@@ -370,7 +375,7 @@ function MainApp() {
         </View>
 
         {/* AI Health Score Card */}
-        {iaData && (
+        {iaData ? (
           <View className="bg-zinc-900 border border-zinc-800 rounded-3xl p-5 mb-8">
             <View className="flex-row justify-between items-center mb-3">
               <Text className="text-white text-lg font-bold flex-1 mr-2">Algoritimo de Saúde Financeira</Text>
@@ -405,7 +410,17 @@ function MainApp() {
               </Text>
             </View>
           </View>
-        )}
+        ) : iaError ? (
+          <View className="bg-zinc-900 border border-zinc-800 rounded-3xl p-5 mb-8">
+            <Text className="text-white text-lg font-bold mb-2">Algoritimo de Saúde Financeira</Text>
+            <Text className="text-rose-400 text-xs leading-5 mb-3">
+              ⚠️ {iaError}
+            </Text>
+            <TouchableOpacity onPress={fetchData}>
+              <Text className="text-lime-400 font-bold text-xs underline">Tentar novamente</Text>
+            </TouchableOpacity>
+          </View>
+        ) : null}
 
         <View className="flex-row items-center justify-between mb-4">
           <Text className="text-white text-xl font-bold">Transações Recentes</Text>
